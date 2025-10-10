@@ -17,7 +17,7 @@ public class Leitor {
     @Column(nullable = false, length = 100)
     private String name;
     private String endereco;
-    private long telefone;
+    private int telefone;
 
 
     @Column(unique = true)
