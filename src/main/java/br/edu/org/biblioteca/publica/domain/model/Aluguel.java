@@ -12,7 +12,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 @Entity
-@Table(name = "emprestimo")
+@Table(name = "tb_aluguel")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
