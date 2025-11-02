@@ -24,8 +24,7 @@ public class Livro {
     @Column(nullable = false, length = 100)
     private String titulo;
 
-
-    private List<Categoria> categoria;
+    private Categoria categoria;
 
     private Autor autor;
     private float preco;

@@ -19,7 +19,6 @@ public class Leitor {
     private String endereco;
     private int telefone;
 
-
     @Column(unique = true)
     private String login;
     @ToString.Exclude

@@ -4,10 +4,9 @@ import lombok.Data;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Data
-public class ALuguelResquestDTO {
+public class AluguelResquestDTO {
     //é a requisição dos livros
     @NotNull
     private Long leitorId;
