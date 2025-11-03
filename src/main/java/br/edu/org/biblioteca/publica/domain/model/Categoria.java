@@ -7,16 +7,14 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "tb_categoria")
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Data  @AllArgsConstructor @NoArgsConstructor
 public class Categoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(unique = true, nullable = false, length = 500)
-    private String name;
+    private String nome;
 
-    //private Livro livro ou ArrayList<Livro> livros
+
 }

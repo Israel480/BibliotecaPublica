@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.mapping.FetchProfile;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -24,50 +25,21 @@ public class Livro {
     @Column(nullable = false, length = 100)
     private String titulo;
 
+    @Column
+    private int estoque;
 
-    private List<Categoria> categoria;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id", nullable = false)
+    private Categoria categoria;
 
+    @OneToOne
     private Autor autor;
+
+    @Column
     private float preco;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataPublicacao;
-
-    public Long getId(){
-        return id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public Autor getAutor(){
-        return autor;
-    }
-
-    public void setAutor(Autor autor) {
-        this.autor = autor;
-    }
-
-    public float getPreco(){
-        return preco;
-    }
-
-    public void setPreco(float preco){
-        this.preco = preco;
-    }
-
-    public LocalDate getDataPublicacao(){
-        return dataPublicacao;
-    }
-
-    public void setDataPublicacao(LocalDate data){
-        this.dataPublicacao = data;
-    }
 
 }
