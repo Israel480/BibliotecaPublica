@@ -28,18 +28,26 @@ public class Livro {
     @Column
     private int estoque;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id", nullable = false)
-    private Categoria categoria;
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "category_id", nullable = false)
+//    private Categoria categoria;
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "autor_id", nullable = false)
+//    private Autor autor;
 
-    @OneToOne
-    private Autor autor;
-
-    @Column
+    @Column(nullable = false)
     private float preco;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataPublicacao;
+    private LocalDate dataCriation;
 
+
+    @PrePersist
+    public void prePersist() {
+        if (this.getDataCriation() == null) {
+            this.dataCriation = LocalDate.now();
+        }
+    }
 }

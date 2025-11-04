@@ -12,4 +12,7 @@ public class LeitorDTO {
     private String login;
     private String password;
     private String email;
+    private float preco;
+
+
 }

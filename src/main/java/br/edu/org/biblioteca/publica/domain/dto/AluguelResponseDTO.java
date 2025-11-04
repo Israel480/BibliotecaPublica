@@ -1,5 +1,6 @@
 package br.edu.org.biblioteca.publica.domain.dto;
 
+import br.edu.org.biblioteca.publica.domain.model.Livro;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -10,7 +11,7 @@ public class AluguelResponseDTO {
     // essa é a resposta para a requisição
     private Long id;
     private LeitorLowDTO leitor;
-    private ArrayList<LivroLowDTO> livros;
+    private ArrayList<Livro> livros;
     private LocalDate dataEmprestimo;
     private LocalDate dataEntregaPrevista;
     private LocalDate dataDevolucaoReal;
