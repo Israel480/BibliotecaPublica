@@ -1,10 +1,14 @@
 package br.edu.org.biblioteca.publica.controller;
 
+import br.edu.org.biblioteca.publica.domain.dto.ErrorDTO;
 import br.edu.org.biblioteca.publica.domain.dto.LivroDTO;
 import br.edu.org.biblioteca.publica.domain.dto.LivroLowDTO;
 import br.edu.org.biblioteca.publica.service.LivroService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
@@ -20,7 +24,7 @@ public class LivroController {
             tags = "Livro")
     @ApiResponse(responseCode = "200", description = "Livro cadastrado com sucesso!")
     @ApiResponse(responseCode = "400", description = "Possíveis causas:" +
-            "\n- O login informado já existe" +
+            "\n- O livro informado já existe" +
             "\n- O nome do Livro excede o limite de 100 caracteres.")
     @PostMapping
     public LivroDTO create(@RequestBody LivroDTO livro){
@@ -43,19 +47,19 @@ public class LivroController {
     }
 
 
-//    @Operation(summary = "Retorna os dados de um Livro baseado no ID",
-//            tags = "User")
-//    @ApiResponses({
-//            @ApiResponse(responseCode = "200",
-//                    description = "Retorno dos dados do Livro"),
-//            @ApiResponse(responseCode = "404",
-//                    description = "O livro com o id " +
-//                            "informado não foi encontrado",
-//                    content = @Content(
-//                            mediaType = "application/json",
-//                            schema = @Schema(implementation = ErrorDTO.class)
-//                    ))
-//    })
+    @Operation(summary = "Retorna os dados de um Livro baseado no ID",
+            tags = "User")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200",
+                    description = "Retorno dos dados do Livro"),
+            @ApiResponse(responseCode = "404",
+                    description = "O livro com o id " +
+                            "informado não foi encontrado",
+                    content = @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = ErrorDTO.class)
+                    ))
+    })
 
     @GetMapping("/{id}")
     public LivroDTO getById(@PathVariable Long id) {
