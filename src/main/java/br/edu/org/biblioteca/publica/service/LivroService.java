@@ -18,10 +18,11 @@ public class LivroService {
 
 
     public LivroDTO create(LivroDTO dto) {
-        var livro = MapperUtil.parseObject(dto, Livro.class);
-        if (livro.getDataCriation() == null) {
-            dto.setDataPublicacao(LocalDate.now());
+        if (dto.getDataCriation() == null) {
+            dto.setDataCriation(LocalDate.now());
         }
+        var livro = MapperUtil.parseObject(dto, Livro.class);
+
         var BookPersist = repository.save(livro);
 
         return MapperUtil.parseObject(BookPersist, LivroDTO.class);
@@ -45,13 +46,13 @@ public class LivroService {
     public void  deleteById(Long id) {
         repository.deleteById(id);
     }
-
-    public List<LivroLowDTO> findALlByCategoria(String nome){
-       return MapperUtil.parseListObjects(repository.findByCategoriaNome(nome), LivroLowDTO.class);
-    }
-
-    public  LivroLowDTO findByTitulo(String titulo){
-        return MapperUtil.parseObject(repository.findByTitulo(titulo), LivroLowDTO.class);
-    }
+//
+//    public List<LivroLowDTO> findALlByCategoria(String nome){
+//       return MapperUtil.parseListObjects(repository.findByCategoriaNome(nome), LivroLowDTO.class);
+//    }
+//
+//    public  LivroLowDTO findByTitulo(String titulo){
+//        return MapperUtil.parseObject(repository.findByTitulo(titulo), LivroLowDTO.class);
+//    }
 
 }

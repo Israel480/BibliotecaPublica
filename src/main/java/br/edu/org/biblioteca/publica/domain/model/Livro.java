@@ -46,7 +46,7 @@ public class Livro {
 
     @PrePersist
     public void prePersist() {
-        if (this.getDataCriation() == null) {
+        if (this.dataCriation == null) {
             this.dataCriation = LocalDate.now();
         }
     }

@@ -10,8 +10,8 @@ import java.util.List;
 
 public interface LivroRepository extends JpaRepository<Livro, Long> {
 
-    @Query("SELECT li FROM Livro li JOIN FETCH li.categoria c WHERE LOWER(c.nome) = LOWER(:nome)")
-    List<Livro> findByCategoriaNome(@Param("nome") String nome);
-
-    Livro findByTitulo(String titulo);
+//    @Query("SELECT li FROM Livro li JOIN FETCH li.categoria c WHERE LOWER(c.nome) = LOWER(:nome)")
+//    List<Livro> findByCategoriaNome(@Param("nome") String nome);
+//
+//    Livro findByTitulo(String titulo);
 }

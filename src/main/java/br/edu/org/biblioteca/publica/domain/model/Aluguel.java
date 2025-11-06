@@ -61,5 +61,5 @@ public class Aluguel {
             joinColumns = @JoinColumn(name = "aluguel_id"),
             inverseJoinColumns = @JoinColumn(name = "livro_id")
     )
-    private ArrayList<LeitorLowDTO> livros;
+    private ArrayList<Livro> livros;
 }

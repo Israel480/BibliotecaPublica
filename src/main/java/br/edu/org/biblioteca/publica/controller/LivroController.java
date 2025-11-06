@@ -4,15 +4,9 @@ import br.edu.org.biblioteca.publica.domain.dto.LivroDTO;
 import br.edu.org.biblioteca.publica.domain.dto.LivroLowDTO;
 import br.edu.org.biblioteca.publica.service.LivroService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
-import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.awt.print.Book;
 import java.util.List;
 
 @RestController
@@ -69,16 +63,16 @@ public class LivroController {
     }
 
 
-    @GetMapping("/by-categoria")
-    public ResponseEntity<List<LivroLowDTO>> getByCategoria(@RequestParam String nome) {
-        List<LivroLowDTO> livros = service.findALlByCategoria(nome);
-        return ResponseEntity.ok(livros);
-    }
-
-    @GetMapping("/by-titulo")
-    public ResponseEntity<LivroLowDTO> getByTitulo(@RequestParam String titulo) {
-        LivroLowDTO livro = service.findByTitulo(titulo);
-        return ResponseEntity.ok(livro);
-    }
+//    @GetMapping("/by-categoria")
+//    public ResponseEntity<List<LivroLowDTO>> getByCategoria(@RequestParam String nome) {
+//        List<LivroLowDTO> livros = service.findALlByCategoria(nome);
+//        return ResponseEntity.ok(livros);
+//    }
+//
+//    @GetMapping("/by-titulo")
+//    public ResponseEntity<LivroLowDTO> getByTitulo(@RequestParam String titulo) {
+//        LivroLowDTO livro = service.findByTitulo(titulo);
+//        return ResponseEntity.ok(livro);
+//    }
 
 }

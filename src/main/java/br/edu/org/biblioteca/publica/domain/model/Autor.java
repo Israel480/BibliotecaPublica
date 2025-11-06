@@ -1,9 +1,6 @@
 package br.edu.org.biblioteca.publica.domain.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -16,19 +13,13 @@ import java.util.List;
 @Table(name = "tb_autor")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Autor extends Leitor{
+public class Autor {
 
-    //nome
-    //
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
 
-    private List<Livro> livros;
+    @Column(nullable = false, length = 100)
+    private String name;
 
-    @OneToMany(mappedBy = "autor", cascade = CascadeType.ALL) // a lista está mapeada pela propriedade "autor"
-    public void adicionarLivro(Livro livro){
-        this.livros.add(livro);
-    }
-
-    public void adicionarListaLivros(List<Livro> livros){
-        this.livros.addAll(livros);
-    }
 }

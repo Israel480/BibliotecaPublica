@@ -17,11 +17,11 @@ public class LivroDTO {
     @NotBlank(message = "O título é obrigatório")
     private String titulo;
     private int estoque;
-    private Autor autor;
-    private Categoria categoria;
+//    private Autor autor;
+//    private Categoria categoria;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @JsonFormat(pattern = "dd/MM/yyyy")
-    private LocalDate dataPublicacao;
+    private LocalDate dataCriation;
 
 }

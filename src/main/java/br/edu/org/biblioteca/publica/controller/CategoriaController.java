@@ -1,17 +1,14 @@
 package br.edu.org.biblioteca.publica.controller;
 
 import br.edu.org.biblioteca.publica.domain.dto.CategoriaDTO;
-import br.edu.org.biblioteca.publica.domain.model.Categoria;
-import br.edu.org.biblioteca.publica.repository.CategoriaRepository;
 import br.edu.org.biblioteca.publica.service.CategoriaService;
-import br.edu.org.biblioteca.publica.util.MapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/Categoria")
+@RequestMapping("/api/v1/categoria")
 public class CategoriaController {
     @Autowired
     private CategoriaService service;
