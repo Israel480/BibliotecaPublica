@@ -50,9 +50,11 @@ public class LivroService {
 //    public List<LivroLowDTO> findALlByCategoria(String nome){
 //       return MapperUtil.parseListObjects(repository.findByCategoriaNome(nome), LivroLowDTO.class);
 //    }
-//
-//    public  LivroLowDTO findByTitulo(String titulo){
-//        return MapperUtil.parseObject(repository.findByTitulo(titulo), LivroLowDTO.class);
-//    }
+
+    public  LivroLowDTO findByTitulo(String titulo){
+        var livro = repository.findByTitulo(titulo);
+
+        return MapperUtil.parseObject(livro, LivroLowDTO.class);
+    }
 
 }
