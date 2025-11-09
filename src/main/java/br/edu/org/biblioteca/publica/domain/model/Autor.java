@@ -19,7 +19,11 @@ public class Autor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(name ="name", nullable = false, length = 100)
     private String name;
+
+    
+
+
 
 }

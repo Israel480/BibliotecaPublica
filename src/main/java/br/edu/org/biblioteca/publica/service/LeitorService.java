@@ -8,9 +8,10 @@ import br.edu.org.biblioteca.publica.repository.LeitorRepository;
 import br.edu.org.biblioteca.publica.util.MapperUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class LeitorService {
 
     @Autowired
