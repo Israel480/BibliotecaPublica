@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -72,11 +73,11 @@ public class LivroController {
 //        List<LivroLowDTO> livros = service.findALlByCategoria(nome);
 //        return ResponseEntity.ok(livros);
 //    }
-//
-//    @GetMapping("/by-titulo")
-//    public ResponseEntity<LivroLowDTO> getByTitulo(@RequestParam String titulo) {
-//        LivroLowDTO livro = service.findByTitulo(titulo);
-//        return ResponseEntity.ok(livro);
-//    }
+
+    @GetMapping("/by-titulo/{titulo}")
+    public ResponseEntity<LivroLowDTO> getByTitulo(@PathVariable String titulo) {
+        LivroLowDTO livro = service.findByTitulo(titulo);
+        return ResponseEntity.ok(livro);
+    }
 
 }

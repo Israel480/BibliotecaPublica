@@ -11,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
 public class LeitorService {
 
@@ -36,6 +35,7 @@ public class LeitorService {
     }
 
     public List<LeitorLowDTO> getAll(){
+
         return MapperUtil.parseListObjects
                 (repository.findAll(), LeitorLowDTO.class);
     }
