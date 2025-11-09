@@ -7,11 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface LivroRepository extends JpaRepository<Livro, Long> {
 
 //    @Query("SELECT li FROM Livro li JOIN FETCH li.categoria c WHERE LOWER(c.nome) = LOWER(:nome)")
 //    List<Livro> findByCategoriaNome(@Param("nome") String nome);
 //
-//    Livro findByTitulo(String titulo);
+  Optional<Livro> findByTitulo(String titulo);
 }
