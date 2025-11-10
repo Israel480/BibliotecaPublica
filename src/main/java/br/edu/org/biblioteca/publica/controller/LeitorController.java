@@ -32,16 +32,30 @@ public class LeitorController {
         return  leitorService.create(leitor);
     }
 
+    @Operation(summary = "Busca todos os leitores",
+            tags = "Leitor")
+    @ApiResponse(responseCode = "200", description = "Busca bem sucedida!")
     @GetMapping("/all")
     public List<LeitorLowDTO> getAll(){
         return leitorService.getAll();
     }
 
+    @Operation(summary = "Altera os dados de um leitor já cadastrado",
+            tags = "Leitor")
+    @ApiResponse(responseCode = "200", description = "Leitor atualizado com sucesso!")
+    @ApiResponse(responseCode = "400", description = "Possíveis causas:" +
+            "\n- O leitor informado não existe" +
+            "\n- O nome do leitor excede o limite de 100 caracteres.")
     @PutMapping
     public LeitorDTO update(@RequestBody LeitorDTO leitor){
         return leitorService.update(leitor);
     }
 
+    @Operation(summary = "Deleta um leitor com base no id",
+            tags = "Leitor")
+    @ApiResponse(responseCode = "200", description = "Leitor deletado com sucesso!")
+    @ApiResponse(responseCode = "400", description = "Possíveis causas:" +
+            "\n- O leitor com id informado não existe")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable(name = "id") Long id){
         leitorService.deleteLeitorById(id);
@@ -51,9 +65,9 @@ public class LeitorController {
             tags = "Leitor")
     @ApiResponses({
             @ApiResponse(responseCode = "200",
-                    description = "Retorno dos dados do leitor"),
+                    description = "Leitor encontrado com sucesso!"),
             @ApiResponse(responseCode = "404",
-                    description = "O leitor não encontrado",
+                    description = "Leitor não encontrado",
                     content = @Content(
                             mediaType = "application/json",
                             schema = @Schema(implementation = ErrorDTO.class)

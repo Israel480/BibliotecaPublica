@@ -32,16 +32,31 @@ public class LivroController {
         return  service.create(livro);
     }
 
+    @Operation(summary = "Busca todos os livros",
+            tags = "Livro")
+    @ApiResponse(responseCode = "200", description = "Busca bem sucedida!")
     @GetMapping("/all")
     public List<LivroLowDTO> GetAll(){
         return service.getAll();
     }
 
+
+    @Operation(summary = "Altera os dados de um Livro já cadastrado",
+            tags = "Livro")
+    @ApiResponse(responseCode = "200", description = "Livro atualizado com sucesso!")
+    @ApiResponse(responseCode = "400", description = "Possíveis causas:" +
+            "\n- O livro informado não existe" +
+            "\n- O nome do Livro excede o limite de 100 caracteres.")
     @PutMapping
     public  LivroDTO update(@RequestBody LivroDTO livro){
         return service.update(livro);
     }
 
+    @Operation(summary = "Deleta um livro com base no id",
+            tags = "Livro")
+    @ApiResponse(responseCode = "200", description = "Livro deletado com sucesso!")
+    @ApiResponse(responseCode = "400", description = "Possíveis causas:" +
+            "\n- O livro com id informado não existe")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable(name = "id") Long id){
          service.deleteById(id);
@@ -49,10 +64,10 @@ public class LivroController {
 
 
     @Operation(summary = "Retorna os dados de um Livro baseado no ID",
-            tags = "User")
+            tags = "Livro")
     @ApiResponses({
             @ApiResponse(responseCode = "200",
-                    description = "Retorno dos dados do Livro"),
+                    description = "Livro encontrado com sucesso"),
             @ApiResponse(responseCode = "404",
                     description = "O livro com o id " +
                             "informado não foi encontrado",
@@ -61,7 +76,6 @@ public class LivroController {
                             schema = @Schema(implementation = ErrorDTO.class)
                     ))
     })
-
     @GetMapping("/{id}")
     public LivroDTO getById(@PathVariable Long id) {
         return  service.findLivroById(id);
@@ -74,7 +88,12 @@ public class LivroController {
 //        return ResponseEntity.ok(livros);
 //    }
 
-    @GetMapping("/by-titulo/{titulo}")
+    @Operation(summary = "Busca livro pelo título informado",
+            tags = "Livro")
+    @ApiResponse(responseCode = "200", description = "Livro encontrado com sucesso!")
+    @ApiResponse(responseCode = "400", description = "Possíveis causas:" +
+            "\n- O livro com o título informado não existe")
+    @GetMapping("/{titulo}")
     public ResponseEntity<LivroLowDTO> getByTitulo(@PathVariable String titulo) {
         LivroLowDTO livro = service.findByTitulo(titulo);
         return ResponseEntity.ok(livro);

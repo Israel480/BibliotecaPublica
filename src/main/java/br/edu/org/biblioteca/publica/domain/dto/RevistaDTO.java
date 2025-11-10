@@ -14,7 +14,6 @@ public class RevistaDTO {
 
     @NotBlank(message = "O título é obrigatório")
     private String titulo;
-    private int estoque;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @JsonFormat(pattern = "dd/MM/yyyy")

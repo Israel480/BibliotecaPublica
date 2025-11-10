@@ -30,27 +30,41 @@ public class RevistaController {
         return  service.create(revista);
     }
 
+    @Operation(summary = "Busca todos as revistas",
+            tags = "Revista")
+    @ApiResponse(responseCode = "200", description = "Busca bem sucedida!")
     @GetMapping("/all")
     public List<RevistaLowDTO> GetAll(){
         return service.getAll();
     }
 
+    @Operation(summary = "Altera os dados de uma revista já cadastrada",
+            tags = "Revista")
+    @ApiResponse(responseCode = "200", description = "Revista atualizada com sucesso!")
+    @ApiResponse(responseCode = "400", description = "Possíveis causas:" +
+            "\n- A revista informada não existe" +
+            "\n- O nome da revista excede o limite de 100 caracteres.")
     @PutMapping
     public  RevistaDTO update(@RequestBody RevistaDTO revista){
         return service.update(revista);
     }
 
+    @Operation(summary = "Deleta uma revista com base no id",
+            tags = "Revista")
+    @ApiResponse(responseCode = "200", description = "Revista deletada com sucesso!")
+    @ApiResponse(responseCode = "400", description = "Possíveis causas:" +
+            "\n- A revista com id informado não existe")
     @DeleteMapping("/{id}")
     public void delete(@PathVariable(name = "id") Long id){
         service.deleteById(id);
     }
 
 
-    @Operation(summary = "Retorna os dados de um Livro baseado no ID",
+    @Operation(summary = "Retorna os dados de uma revista baseado no ID",
             tags = "Revista")
     @ApiResponses({
             @ApiResponse(responseCode = "200",
-                    description = "Retorno dos dados da Revista"),
+                    description = "Retorna dos dados da Revista"),
             @ApiResponse(responseCode = "404",
                     description = "Revista não encontrada",
                     content = @Content(
@@ -58,7 +72,6 @@ public class RevistaController {
                             schema = @Schema(implementation = ErrorDTO.class)
                     ))
     })
-
     @GetMapping("/{id}")
     public RevistaDTO getById(@PathVariable Long id) {
         return  service.findRevistaById(id);
