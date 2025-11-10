@@ -21,6 +21,13 @@ public class MinhaListaController {
     @Autowired
     private MinhaListaService minhaListaService;
 
+    @Operation(summary = "Muda status de um livro na lista",
+            tags = "Minha Lista")
+    @ApiResponse(responseCode = "200", description = "Status de livro alterado com sucesso!")
+    @ApiResponse(responseCode = "400", description = "Possíveis causas:" +
+            "\n- O leitor informado não existe" +
+            "\n- O livro informado não existe" +
+            "\n- Status informado inválido")
     @PatchMapping
     public ResponseEntity<MinhaListaResponseDTO> mudarStatusLivro(@RequestBody @Valid MinhaListaRequestDTO requestDTO) {
         // Chamada correta: usa a instância injetada (minhaListaService)
