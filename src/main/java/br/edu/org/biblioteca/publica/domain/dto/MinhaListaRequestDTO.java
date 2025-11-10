@@ -6,8 +6,8 @@ import jakarta.validation.constraints.NotNull;
 
 @Data
 public class MinhaListaRequestDTO {
-    @NotNull(message = "o ID do livro é obirgatorio")
-    private long leitorId;
+    @NotNull(message = "o ID do livro é obrigatorio")
+    private Long leitorId;
 
     @NotNull(message = "O ID do livro é obrigatório.")
     private Long livroId;

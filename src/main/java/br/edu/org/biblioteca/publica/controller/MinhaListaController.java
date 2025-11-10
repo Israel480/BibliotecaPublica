@@ -4,6 +4,8 @@ import br.edu.org.biblioteca.publica.domain.model.MinhaLista.StatusLeitura; // U
 import br.edu.org.biblioteca.publica.domain.dto.MinhaListaRequestDTO;
 import br.edu.org.biblioteca.publica.domain.dto.MinhaListaResponseDTO;
 import br.edu.org.biblioteca.publica.service.MinhaListaService; // Injetando o Service com o nome correto
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -12,17 +14,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/minhas-listas") // Endpoint base ajustado
+@RequestMapping("/api/v1/minhas-listas") // Endpoint base ajustado
 public class MinhaListaController {
 
     // Injeta a instância do Service com o nome correto
     @Autowired
     private MinhaListaService minhaListaService;
 
-    // 1. CREATE/UPDATE (PATCH): Mudar/Definir o status de um livro
     @PatchMapping
     public ResponseEntity<MinhaListaResponseDTO> mudarStatusLivro(@RequestBody @Valid MinhaListaRequestDTO requestDTO) {
-
         // Chamada correta: usa a instância injetada (minhaListaService)
         MinhaListaResponseDTO listaAtualizada = minhaListaService.mudarStatus(
                 requestDTO.getLeitorId(),
@@ -32,7 +32,6 @@ public class MinhaListaController {
         return ResponseEntity.ok(listaAtualizada);
     }
 
-    // 2. READ: Buscar todos os livros de um leitor com um status específico (por Status)
     @GetMapping("/leitor/{leitorId}/{status}")
     public ResponseEntity<List<MinhaListaResponseDTO>> buscarLivrosPorStatus(
             @PathVariable Long leitorId,
@@ -43,7 +42,6 @@ public class MinhaListaController {
         return ResponseEntity.ok(lista);
     }
 
-    // 3. READ: Buscar toda a lista de um leitor (todos os status)
     @GetMapping("/leitor/{leitorId}")
     public ResponseEntity<List<MinhaListaResponseDTO>> buscarTodaLista(@PathVariable Long leitorId) {
 
@@ -52,7 +50,6 @@ public class MinhaListaController {
         return ResponseEntity.ok(todaLista);
     }
 
-    // 4. DELETE: Remover um livro da lista (limpar o status)
     @DeleteMapping("/leitor/{leitorId}/livro/{livroId}")
     public ResponseEntity<Void> removerLivroDaLista(
             @PathVariable Long leitorId,

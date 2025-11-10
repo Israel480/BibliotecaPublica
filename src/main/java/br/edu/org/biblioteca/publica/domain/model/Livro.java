@@ -25,9 +25,6 @@ public class Livro {
     @Column(nullable = false, length = 100)
     private String titulo;
 
-    @Column
-    private int estoque;
-
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "category_id", nullable = false)
 //    private Categoria categoria;
@@ -35,9 +32,6 @@ public class Livro {
 //    @ManyToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "autor_id", nullable = false)
 //    private Autor autor;
-
-    @Column(nullable = false)
-    private float preco;
 
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     @JsonFormat(pattern = "dd/MM/yyyy")

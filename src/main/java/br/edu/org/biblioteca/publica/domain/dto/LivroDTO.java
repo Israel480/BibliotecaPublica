@@ -16,7 +16,6 @@ public class LivroDTO {
 
     @NotBlank(message = "O título é obrigatório")
     private String titulo;
-    private int estoque;
 //    private Autor autor;
 //    private Categoria categoria;
 
