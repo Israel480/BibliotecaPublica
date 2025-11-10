@@ -10,10 +10,8 @@ public class MinhaListaResponseDTO {
     private StatusLeitura status;
 
     private Long leitorId;
-    private String nomeLeitor;
 
     private Long livroId;
     private String tituloLivro;
-    private String autorLivro;
 
 }
